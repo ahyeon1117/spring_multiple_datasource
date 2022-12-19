@@ -1,0 +1,38 @@
+# KST 및 Timezone 관련 오류 발생 시 
+# application.yml 또는 application-mysql.yml의 url 끝에 
+# ?useUnicode=true&serverTimezone=Asia/Seoul 추가
+# 혹은 compose 파일의 TZ=Asia/Seoul 제거
+
+version: '3.1'
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_DATABASE=mysql
+      - MYSQL_ROOT_PASSWORD=hyeon
+      - MYSQL_USER=hyeon
+      - MYSQL_PASSWORD=hyeon
+      - TZ=Asia/Seoul
+    volumes:
+      - "mysql-volume:/var/lib/mysql"
+
+  postgres:
+    container_name: postgres
+    volumes:
+      - "postgresql-volume:/var/lib/postgresql/data"
+    image: postgres:11
+    ports:
+      - 5434:5432
+    restart: always
+    environment:
+      - POSTGRES_USER=hyeon
+      - POSTGRES_PASSWORD=hyeon
+      - POSTGRES_DB=postgresql
+      - TZ=Asia/Seoul
+volumes:
+  mysql-volume:
+  postgresql-volume:
