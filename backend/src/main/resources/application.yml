@@ -6,7 +6,7 @@ datasource:
     password: hyeon
     
   postgresql:
-    url: jdbc:postgresql://localhost:3306/postgresql
+    url: jdbc:postgresql://localhost:5434/postgresql
     driverClassName: org.postgresql.Driver
     username: hyeon
     password: hyeon
