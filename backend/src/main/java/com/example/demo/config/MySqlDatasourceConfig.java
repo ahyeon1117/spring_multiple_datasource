@@ -41,7 +41,7 @@ public class MySqlDatasourceConfig {
     @Bean(name = "mysqlEntityManagerFactory")
     public LocalContainerEntityManagerFactoryBean mysqlEntityManagerFactory(
 		EntityManagerFactoryBuilder builder) {
-	return builder.dataSource(mysqlDataSource())
+	return builder.dataSource(mysqlDataSource()).packages("com.example.demo.entity.mysql")
 			.build();
     }
 

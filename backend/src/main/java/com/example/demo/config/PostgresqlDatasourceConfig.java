@@ -44,7 +44,7 @@ public class PostgresqlDatasourceConfig {
     @Primary
     public LocalContainerEntityManagerFactoryBean postgresqlEntityManager(
             EntityManagerFactoryBuilder builder) {
-        return builder.dataSource(postgresqlDataSource())
+        return builder.dataSource(postgresqlDataSource()).packages("com.example.demo.entity.postgresql")
                 .build();
     }
 
